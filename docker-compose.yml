@@ -6,7 +6,7 @@ services:
     ports:
       - 8000:8000
     environment:
-      - DEBUG=true
+      - DEBUG=false
       - DJANGO_ALLOWED_HOSTS:0.0.0.0,127.0.0.1,localhost
       - DATABASE_URL=postgresql://user:password@db:5432/sample_django_app
     volumes:
