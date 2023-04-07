@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - 8000:8000
+    environment:
+      - DEBUG=true
+      - DJANGO_ALLOWED_HOSTS:0.0.0.0,127.0.0.1,localhost
+      - DATABASE_URL=postgresql://user:password@db:5432/sample_django_app
+    volumes:
+      - .:/app
+  db:
+    image: postgres:15-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=sample_django_app
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - pg_data:/var/lib/postgresql/data/
+
+volumes:
+  pg_data:
